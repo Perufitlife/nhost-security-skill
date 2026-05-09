@@ -1,0 +1,22 @@
+{
+  "name": "nhost-security",
+  "version": "0.1.0",
+  "description": "Audit Nhost (Hasura+Postgres) projects for permissive role permissions, public GraphQL access, and unsafe auth config. Active probe confirms leaks live.",
+  "type": "module",
+  "bin": {
+    "nhost-security": "./scripts/audit.js"
+  },
+  "scripts": {
+    "audit": "node scripts/audit.js"
+  },
+  "keywords": ["nhost", "hasura", "security", "audit", "graphql", "postgres"],
+  "author": "Renzo Madueno (@Perufitlife)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Perufitlife/nhost-security-skill"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

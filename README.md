@@ -2,6 +2,8 @@
 
 > Audit any Hasura instance (or Nhost project) for permissive role permissions, missing row-level scoping, and public GraphQL leaks. Active probe confirms each leak by sending an anonymous GraphQL query and showing what comes back.
 
+> ▶ **Run it without installing anything →** [apify.com/renzomacar/nhost-security-auditor](https://apify.com/renzomacar/nhost-security-auditor) (paste Hasura endpoint + admin secret, get HTML report)
+
 > ⚡ Want me to run it for you and send back a written report? **$99, 24h delivery →** https://perufitlife.github.io/supabase-security-skill/ (one landing covers all five — Supabase, PocketBase, Appwrite, Hasura, Firebase)
 
 ## Why this exists

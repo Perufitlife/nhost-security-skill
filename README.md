@@ -2,6 +2,8 @@
 
 > Audit any Hasura instance (or Nhost project) for permissive role permissions, missing row-level scoping, and public GraphQL leaks. Active probe confirms each leak by sending an anonymous GraphQL query and showing what comes back.
 
+> ⚡ Want me to run it for you and send back a written report? **$99, 24h delivery →** https://perufitlife.github.io/supabase-security-skill/ (one landing covers all four — Supabase, PocketBase, Appwrite, Hasura)
+
 ## Why this exists
 
 Hasura's permission model is powerful but easy to leave too open. The patterns I see most often:

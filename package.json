@@ -7,9 +7,17 @@
     "nhost-security": "./scripts/audit.js"
   },
   "scripts": {
-    "audit": "node scripts/audit.js"
+    "audit": "node scripts/audit.js",
+    "postinstall": "node scripts/postinstall.js || true"
   },
-  "keywords": ["nhost", "hasura", "security", "audit", "graphql", "postgres"],
+  "keywords": [
+    "nhost",
+    "hasura",
+    "security",
+    "audit",
+    "graphql",
+    "postgres"
+  ],
   "author": "Renzo Madueno (@Perufitlife)",
   "license": "MIT",
   "repository": {

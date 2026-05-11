@@ -252,8 +252,38 @@ export async function audit(opts) {
 async function main() {
   const args = process.argv.slice(2);
   if (args.includes("--help") || args.includes("-h")) {
-    console.error(`Usage: nhost-security [--endpoint URL --secret SECRET] [--no-probe] [--html report.html]\n\nEnv vars: HASURA_ENDPOINT (Nhost: https://<subdomain>.hasura.<region>.nhost.run), HASURA_ADMIN_SECRET\n\nDetects: anonymous role with open permissions, user role missing row-level filter, SELECT-all-columns leaks, public introspection.`);
+    console.error(`Usage:
+  Full audit (needs admin secret):
+    nhost-security [--endpoint URL --secret SECRET] [--no-probe] [--html report.html]
+
+  Keyless discover (parses local repo + probes GraphQL anon):
+    nhost-security --discover [path]
+    nhost-security --discover . --endpoint https://app.hasura.us-east-1.nhost.run
+
+Env vars: HASURA_ENDPOINT (Nhost: https://<subdomain>.hasura.<region>.nhost.run), HASURA_ADMIN_SECRET
+
+Detects: anonymous role with open permissions, user role missing row-level filter, SELECT-all-columns leaks, public introspection.
+--discover: no admin secret needed; parses gql\`\` queries + probes anon.`);
     process.exit(1);
+  }
+
+  // --discover mode (v0.2): no admin secret needed.
+  if (args.includes("--discover")) {
+    const { discover } = await import("./discover.js");
+    const idx = args.indexOf("--discover");
+    const path = args[idx + 1] && !args[idx + 1].startsWith("--") ? args[idx + 1] : process.cwd();
+    const endpointOverride = args.includes("--endpoint") ? args[args.indexOf("--endpoint") + 1] : null;
+    const result = await discover({ root: path, endpoint: endpointOverride });
+
+    const htmlIdx = args.indexOf("--html");
+    if (htmlIdx !== -1) {
+      const out = args[htmlIdx + 1] || "discover-report.html";
+      const { renderHtml } = await import("./report.js");
+      writeFileSync(out, renderHtml(result));
+      console.error(`Discover report written to ${out}`);
+    }
+    console.log(JSON.stringify(result, null, 2));
+    return;
   }
 
   const flag = (k) => args.includes(k) ? args[args.indexOf(k) + 1] : null;
@@ -263,6 +293,8 @@ async function main() {
 
   if (!endpoint || !secret) {
     console.error("Error: provide --endpoint, --secret (or HASURA_ENDPOINT / HASURA_ADMIN_SECRET env vars)");
+    console.error("\nTip: try --discover for a keyless scan of your local repo:");
+    console.error("  nhost-security --discover .");
     process.exit(1);
   }
 

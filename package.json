@@ -1,7 +1,7 @@
 {
   "name": "nhost-security",
-  "version": "0.1.0",
-  "description": "Audit Nhost (Hasura+Postgres) projects for permissive role permissions, public GraphQL access, and unsafe auth config. Active probe confirms leaks live.",
+  "version": "0.2.0",
+  "description": "Audit Nhost (Hasura+Postgres) projects for permissive role permissions, public GraphQL access, and unsafe auth config. Keyless --discover mode parses your repo + probes GraphQL anon (no admin secret needed).",
   "type": "module",
   "bin": {
     "nhost-security": "./scripts/audit.js"

@@ -61,6 +61,13 @@ For PocketBase, see https://github.com/Perufitlife/pocketbase-security-skill
 For Appwrite, see https://github.com/Perufitlife/appwrite-security-skill
 
 
+## Want it done for you?
+
+Two productized services:
+
+- [**Vibe-code Security Review** — $199 / 48h](https://buy.stripe.com/bJe00jgik4EqdWV2iScAo0n) — I review your AI-generated code (Cursor / Claude / v0 / Bolt) and ship a PDF with fixes ranked by exploitability.
+- [**Sandbox-as-a-Service** — $499 / 48h](https://buy.stripe.com/aFa7sLc243Amf0Z5v4cAo0l) — custom partner integration sandbox built for your API.
+
 ## Integration pattern reference
 
 See [`rotatepilot-skyx-sandbox`](https://github.com/Perufitlife/rotatepilot-skyx-sandbox) for a live demo of how a partner consumes one of our public REST APIs in a single static page — built 12-may-2026 in response to an aviation-platform partnership inbound. Same JSON-contract / CORS / edge-served approach we use for `nhost-security` integrations.
